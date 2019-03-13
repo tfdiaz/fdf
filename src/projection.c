@@ -13,7 +13,7 @@
 /*
 ** There are two transformations that must be made. First the phi then the
 ** theta transformation. The -/+ .5 allows us to center the image. All
-** coordinate points are normalized within draw_update.c  
+** coordinate points are normalized within draw_update.c
 */
 
 #include "wire.h"

@@ -13,7 +13,7 @@
 /*
 ** Minilibx comes with hooks to grab certain keypresses. The functions below
 ** map keys to individual actions. All additional functions can be found in
-** user_changes.c and user_shifts.c 
+** user_changes.c and user_shifts.c
 */
 
 #include "wire.h"

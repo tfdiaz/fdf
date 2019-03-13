@@ -14,9 +14,9 @@ NAME = fdf
 
 CC = @gcc
 
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
-MLXFLAGS = -L minilibx_macos/ -lmlx -framework OpenGL -framework AppKit
+MLXFLAGS = -framework OpenGl -framework AppKit
 
 SRC =	src/main.c src/user_changes.c src/user_shifts.c src/keypress.c \
 		src/line_algo.c src/parse_map.c src/parse_utilities.c src/draw_line.c \
@@ -28,30 +28,30 @@ LIBDIR = libft
 
 MLXDIR = minilibx_macos
 
-LIB = -L libft/ -lft
+LIB = -L $(LIBDIR) -lft
 
-$(NAME): $(OBJS) $(LIB) $(MLX)
-	$(CC) $(CFLAGS) $(LIB) $(MLXFLAGS) minilibx_macos/libmlx.a $(OBJS) -o $(NAME)
+MLXLIB = -L $(MLXDIR) -lmlx
 
-$(LIB):
-	@make -C $(LIBDIR)
+$(NAME): $(OBJS) libf mlx
+	$(CC) $(CFLAGS) $(MLXLIB) $(LIB) $(MLXFLAGS) $(OBJS) -o $(NAME)
 
-$(MLX):
-	@make -C $(MLXDIR) all
+libf:
+	@$(MAKE) -C $(LIBDIR)
+
+mlx:
+	@$(MAKE) -C $(MLXDIR)
 
 .PHONY: clean fclean all re debug
 
-debug: $(SRC) $(LIB)
-	$(CC) -o debug -g $(SRC) $(LIB) $(MLXFLAGS)
-
 clean:
-	@cd/src rm -f $(OBJS)
-	@make -C $(LIBDIR) clean
-	@make -C $(MLXDIR) clean
+	@rm -f $(OBJS)
+	@$(MAKE) -C $(LIBDIR) clean
+	@$(MAKE) -C $(MLXDIR) clean
 
 fclean: clean
 	@rm -f $(NAME)
-	@make -C $(LIBDIR) fclean
+	@$(MAKE) -C $(LIBDIR) fclean
+	@$(MAKE) -C $(MLXDIR) fclean
 
 all: $(NAME) $(NAME2)
 

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/* 
+/*
 ** These functions will iterate through all the points in our wireframe. These
 ** points are stored in mlx->data. We will call y_to_x_loop and x_to_y_loop to
 ** draw lines from each point to its neighbors. Prior to this we will call
@@ -79,7 +79,6 @@ static void	x_to_y_loop(t_mlx *mlx)
 void		draw_update(t_mlx *mlx)
 {
 	int bpp;
-	int red;
 	int size_line;
 	int endian;
 

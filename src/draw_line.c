@@ -41,7 +41,6 @@ static char	bool_check_out_of_bounds(int *p1, int *p2)
 
 void		draw_line(t_mlx *mlx, double d_p1[3], double d_p2[3])
 {
-	t_color	color;
 	double	*pt;
 	int		p1[2];
 	int		p2[2];
