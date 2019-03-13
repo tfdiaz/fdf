@@ -18,7 +18,9 @@ FLAGS = -Wall -Wextra -Werror
 
 MLXFLAGS = -L minilibx_macos/ -lmlx -framework OpenGL -framework AppKit
 
-SRC = main.c 
+SRC =	src/main.c src/user_changes.c src/user_shifts.c src/keypress.c \
+		src/line_algo.c src/parse_map.c src/parse_utilities.c src/draw_line.c \
+		src/draw_update.c src/projection.c src/misc.c
 
 OBJS = $(SRC:.c=.o)
 
@@ -35,7 +37,7 @@ $(LIB):
 	@make -C $(LIBDIR)
 
 $(MLX):
-	@make -C $(MLXDIR)
+	@make -C $(MLXDIR) all
 
 .PHONY: clean fclean all re debug
 
@@ -43,8 +45,9 @@ debug: $(SRC) $(LIB)
 	$(CC) -o debug -g $(SRC) $(LIB) $(MLXFLAGS)
 
 clean:
-	@rm -f $(OBJS)
+	@cd/src rm -f $(OBJS)
 	@make -C $(LIBDIR) clean
+	@make -C $(MLXDIR) clean
 
 fclean: clean
 	@rm -f $(NAME)
