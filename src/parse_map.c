@@ -65,7 +65,7 @@ static void	copy_free_vals(int **ret, int *row, int **tmp, int i)
 		ret[0] = row;
 }
 
-void		read_file(int fd, t_mlx *mlx, int i)
+void		read_file(int fd, t_mlx *mlx, int i, int chk)
 {
 	char	*line;
 	char	**strs;
@@ -76,7 +76,7 @@ void		read_file(int fd, t_mlx *mlx, int i)
 	error_in_read(fd);
 	ret = NULL;
 	tmp = NULL;
-	while (get_next_line(fd, &line) != 0)
+	while ((chk = get_next_line(fd, &line)) > 0)
 	{
 		tmp = ret;
 		strs = ft_strsplit(line, ' ');
@@ -88,7 +88,7 @@ void		read_file(int fd, t_mlx *mlx, int i)
 		freestrs(&strs);
 		i++;
 	}
-	close_and_free(line, fd);
+	close_and_free(line, fd, chk);
 	mlx->y_len = i - 1;
 	mlx->data = ret;
 }

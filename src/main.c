@@ -57,7 +57,7 @@ int		main(int argc, char **argv)
 	if (argc == 2)
 	{
 		mlx = constructor();
-		read_file(open(argv[1], O_RDONLY), mlx, 1);
+		read_file(open(argv[1], O_RDONLY), mlx, 1, 1);
 		build(mlx);
 	}
 	else

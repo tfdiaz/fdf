@@ -32,9 +32,14 @@ void	init_data(int ***ret, int **row, int i, t_mlx *mlx)
 	*row = (int *)malloc(sizeof(int) * mlx->x_len);
 }
 
-void	close_and_free(char *line, int fd)
+void	close_and_free(char *line, int fd, int chk)
 {
 	if (line)
 		free(line);
+	if (chk < 0)
+	{
+		ft_printf("Error in read\n");
+		exit(-1);
+	}
 	close(fd);
 }
