@@ -59,7 +59,13 @@ unsigned int	set_color(t_mlx *mlx, double p1[3], double p2[3])
 	double	average;
 	int		shift;
 
-	if (mlx->color_mode == 2)
+	if (mlx->color_mode == 3)
+	{
+		average = (p1[2] + p2[2]) / 2.0;
+		shift = average * 70000;
+		return (mlx_get_color_value(mlx->mlx_ptr, 0x010000 + shift));
+	}
+	else if (mlx->color_mode == 2)
 	{
 		average = (p1[2] + p2[2]) / 2.0;
 		shift = (1 - average) * 13;

@@ -40,6 +40,7 @@
 # define KEY_PLUS 24
 # define KEY_ONE 18
 # define KEY_TWO 19
+# define KEY_THREE 20
 
 typedef unsigned int	t_color;
 

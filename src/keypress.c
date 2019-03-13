@@ -34,6 +34,8 @@ static void	key_press_helper(int keycode, t_mlx *mlx)
 		phi_shift(1, mlx);
 	if (keycode == KEY_LEFT_ARROW)
 		phi_shift(0, mlx);
+	if (keycode == KEY_THREE)
+		color_shift(3, mlx);
 }
 
 int			key_press(int keycode, void *param)
