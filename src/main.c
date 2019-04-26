@@ -24,7 +24,8 @@
 void	build(t_mlx *mlx)
 {
 	mlx->mlx_ptr = mlx_init();
-	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIND_X, WIND_Y, "Tomas Diaz");
+	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIND_X, WIND_Y,
+	"Wire Machine by Tomas Diaz");
 	draw_update(mlx);
 	mlx_hook(mlx->win_ptr, 2, 0, key_press, (void*)mlx);
 	mlx_hook(mlx->win_ptr, 3, 0, key_press, (void*)mlx);
